@@ -1,0 +1,140 @@
+﻿@model IEnumerable<Untt_test.Models.GuestList>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<style>
+    .btn-green {
+        background-color: green;
+        color: white;
+        /*font-size: 20px;*/
+    }
+
+    .btn-red {
+        background-color: red;
+        color: white;
+        /*font-size: 20px;*/
+    }
+
+    .glyphicon-plus {
+        font-size: 40px;
+        padding-bottom: 30px;
+    }
+
+    .glyphicon-minus {
+        font-size: 40px;
+        padding-bottom: 30px;
+    }
+
+    /*#pl .glyphicon-plus {
+          font-size: 40px;
+          padding-bottom: 10px;
+    }*/
+</style>
+
+@Scripts.Render("~/bundles/jquery")
+
+    <style>
+        .custom {
+            text-decoration: underline;
+        }
+    </style>
+
+
+    <div>
+        <h1>Список гостей</h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <form class="navbar-form">
+                    <div class="input-group">
+                        <input type="text" id="search"  class="form-control" placeholder="Поиск гостей по ФИО, email, телефону"  name="search">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" value="0" type="button" name="btn"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                    <br>
+                </form>                              
+                <div id="gl">
+                    @{Html.RenderPartial("GuestList");}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <p><a href="#allGuest" style="text-decoration: underline">Все гости</a></p>                                            
+                <p><a href="#gl" style="text-decoration: underline">Гости посещающие мероприятие</a></p>                            
+                <p><a href="#gll" style="text-decoration: underline">Гости не посещающие мероприятие</a></p>                       
+            </div>
+
+        </div>      
+
+        <div class="row">
+            <div class="col-md-8">         
+                <button class="btn-primary" name="btn">Закончить мероприятие</button> 
+         
+            </div>          
+        </div>
+
+    </div>   
+
+
+<script>
+    $(document).ready(function () {      
+                 
+        $("button[name='btn']").click(function (i, el) {          
+            
+                var cl = i.target.className;                                
+                var val = i.target.value;
+                var se = $("#search").val();              
+
+                $.ajax({
+                    url: 'Home/GuestList/',
+                    data: { flag: cl, id: val, ser: se },
+                    type: 'GET',
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (response) {
+                        $('#gl').html(response);
+                    }
+                });                    
+        });       
+
+        $('a[href="#allGuest"]').click(function () {            
+            $.ajax({
+                url: 'Home/GuestList/',               
+                data: { flag: 'all' },
+                type: 'GET',
+                contentType: 'application/json; charset=utf-8',
+                success: function (response) {
+                    $('#gl').html(response);
+                }
+            });
+        });
+
+        $('a[href="#gl"]').click(function () {                        
+            $.ajax({
+                url: 'Home/GuestList/',             
+                data: {flag: "0"},
+                type: 'GET',
+                contentType: 'application/json; charset=utf-8',
+                success: function (response)
+                {
+                    $('#gl').html(response);
+                }
+            });
+        });
+
+        $('a[href="#gll"]').click(function () {            
+            $.ajax({
+                url: 'Home/GuestList/',
+                data: { flag: "1" },
+                type: 'GET',
+                contentType: 'application/json; charset=utf-8',
+                success: function (response) {
+                    $('#gl').html(response);
+                }
+            });
+
+        });       
+
+    })
+</script>
