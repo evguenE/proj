@@ -9,7 +9,7 @@
 
 
 SET IDENTITY_INSERT [dbo].[Guests] ON
-INSERT INTO [dbo].[Guests] ([Id], [fio], [email], [phone], [flag]) VALUES (1, N'Project3', N'evguen@rambler.ru', N'89056785', N'0')
+
 INSERT INTO [dbo].[Guests] ([Id], [fio], [email], [phone], [flag]) VALUES (1, N'Project', N'evguen@rambler.ru', N'89056785', N'0')
 INSERT INTO [dbo].[Guests] ([Id], [fio], [email], [phone], [flag]) VALUES (1, N'Иванов Иван Иванович', N'evguen@rambler.ru', N'89056785', N'0')
 INSERT INTO [dbo].[Guests] ([Id], [fio], [email], [phone], [flag]) VALUES (2, N'Сидоров Сергей Сергеевич', N'sidor@yandex.ru', N'89066678', N'1')
