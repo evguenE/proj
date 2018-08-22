@@ -17,5 +17,6 @@ INSERT INTO [dbo].[Guests] ([Id], [fio], [email], [phone], [flag]) VALUES (5, N'
 INSERT INTO [dbo].[Guests] ([Id], [fio], [email], [phone], [flag]) VALUES (6, N'Стивенсон', N'sss@uuu.org', N'66666', N'1')
 INSERT INTO [dbo].[Guests] ([Id], [fio], [email], [phone], [flag]) VALUES (7, N'Proj', N'evguen@rambler.ru', N'89056785', N'0')
 INSERT INTO [dbo].[Guests] ([Id], [fio], [email], [phone], [flag]) VALUES (8, N'P', N'evguen@rambler.ru', N'89056785', N'0')
+INSERT INTO [dbo].[Guests] ([Id], [fio], [email], [phone], [flag]) VALUES (9, N'P', N'evguen@rambler.ru', N'89056785', N'0')
 SET IDENTITY_INSERT [dbo].[Guests] OFF
 
